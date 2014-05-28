@@ -4,6 +4,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>Is Ja Rule Ok?</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<script src="Chart.min.js"></script>
+		<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
 </head>
 <style>
 	#content{
@@ -54,8 +56,14 @@
 		display:inline-block;
 	}
 
-	.arc path {
-	  stroke: #fff;
+	#chart{
+		margin-top:40px;
+		margin-bottom:40px;
+	}
+
+	#canvas{
+		display: block;
+		margin: 0 auto;
 	}
 
 </style>
@@ -64,57 +72,35 @@
 		<h1>NO</h1>
 		<p>In a recent <a href="http://hot937.cbslocal.com/2014/05/22/thursday-throwdown-snoop-dogg-vs-ja-rule/">Thursday Throwdown</a>, Ja Rule lost in a stunning 72 point margin to Snoop Dogg.</p>
 	<!--	<p class="quote">....<span> - Ja Rule</span></p>
--->	</div>
-	
+-->	
+		<div id="chart">
+			<canvas id="canvas" height="300" width="300"></canvas>
+			
+		</div>
+	</div>
+		<script>
+			var pieData = [
+					{
+						value: 85.71,
+						color:"#F38630",
+						label : 'Snoop Dogg',
+					             labelColor : 'white',
+					             labelFontSize : '12'
+					},
+					{
+						value : 14.29,
+						color : "#18A7B5",
+						label : 'Ja Rule',
+					             labelColor : 'white',
+					             labelFontSize : '12'
+					}
 
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script>
+				];
 
-var width = 960,
-    height = 500,
-    radius = Math.min(width, height) / 2;
+		var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
 
-var color = d3.scale.ordinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
-var arc = d3.svg.arc()
-    .outerRadius(radius - 10)
-    .innerRadius(0);
+		</script>
 
-var pie = d3.layout.pie()
-    .sort(null)
-    .value(function(d) { return d.population; });
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-d3.csv("data.csv", function(error, data) {
-
-  data.forEach(function(d) {
-    d.population = +d.population;
-  });
-
-  
-
-  var g = svg.selectAll(".arc")
-      .data(pie(data))
-    .enter().append("g")
-      .attr("class", "arc");
-
-  g.append("path")
-      .attr("d", arc)
-      .style("fill", function(d) { return color(d.data.age); });
-
-  g.append("text")
-      .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
-      .attr("dy", ".35em")
-      .style("text-anchor", "middle")
-      .text(function(d) { return d.data.age; });
-
-});
-</script>
 </body>
 </html>
