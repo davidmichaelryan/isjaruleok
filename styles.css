@@ -1,8 +1,12 @@
 /* Basic Element Styles */
 
 html{
+  box-sizing: border-box;
   position: relative;
   min-height: 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body{
@@ -66,10 +70,8 @@ body{
 
 img{
   border: 20px solid white;
-  box-sizing: border-box;
   margin: 30px auto;
 }
-
 
 p{
   background: white;
