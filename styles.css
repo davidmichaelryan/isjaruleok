@@ -1,0 +1,70 @@
+/* Basic Element Styles */
+
+body{
+  font-family:'Open Sans', sans-serif;
+  margin:40px auto 0;
+  text-align: center;
+}
+
+h1{
+  font-size: 8em;
+  line-height: 1;
+  margin: 10px auto 20px auto;
+}
+h2{
+  font-size: 5em;
+  margin: 5px auto 10px auto;
+}
+h3{
+  font-size: 2em;
+  margin: 5px auto 10px auto;
+}
+p{
+  margin: 0 auto;
+}
+a{
+  color: #ff3b00;
+  display: inline;
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+}
+
+img{
+  margin:10px 0px;
+  max-width:100%;
+}
+iframe{
+  margin: 0 auto !important;
+}
+
+#credits{
+  bottom: 0;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+}
+
+/* Theme Styles */
+
+body{
+  background-image: url("christmaspattern.png");
+  background-repeat: repeat;;
+}
+
+img{
+  border: 20px solid white;
+}
+
+p{
+  background: white;
+  display: inline-block;
+  padding: 10px;
+}
+
+h3{
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+
